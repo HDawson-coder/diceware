@@ -1,33 +1,62 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+### IntelliJ/Android Studio ###
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# - metadata
+/.idea/
 *.iml
-*.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# - temporary files
+/captures/
 
-### VS Code ###
-.vscode/
+# - build output
+/out/
+
+
+### Eclipse ###
+
+# - metadata
+/.settings/
+.project
+.classpath
+
+# - build output
+/bin/
+
+
+### Gradle ###
+
+# - temporary files
+/.gradle/
+
+# - local properties
+local.properties
+
+# - build output
+/build/
+
+
+### Maven ###
+
+# - build output
+/target/
+
+
+### Derby ###
+
+# - data directory
+# DON'T FORGET to add database directory to this in Spring Data projects!
+
+# - log file
+derby.log
+
+
+### Floobits ###
+
+# - metadata
+.floo
+.flooignore
+
+
+### OS X ###
+
+# - metadata
+.DS_Store
