@@ -43,7 +43,7 @@ local.properties
 ### Derby ###
 
 # - data directory
-# DON'T FORGET to add database directory to this in Spring Data projects!
+/diceware_db/
 
 # - log file
 derby.log

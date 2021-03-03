@@ -9,35 +9,25 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DicewareController {
+@RequestMapping("/passphrases")
+public class PassphraseController {
 
   private final PassphraseGenerator generator;
   private final PassphraseRepository repository;
 
   @Autowired
-  public DicewareController(PassphraseGenerator generator,
+  public PassphraseController(PassphraseGenerator generator,
       PassphraseRepository repository) {
     this.generator = generator;
     this.repository = repository;
   }
 
-  @GetMapping(value = "/hello", produces = MediaType.APPLICATION_JSON_VALUE)
-  public String helloWorld(
-      @RequestParam(required = false, defaultValue = "world") String name) {
-    return String.format("Hello, %s!", name);
-  }
-
-  @GetMapping(value = "/diceware", produces = MediaType.APPLICATION_JSON_VALUE)
-  public String[] get(@RequestParam(required = false, defaultValue = "4") int length) {
-    return generator.generate(length);
-  }
-
-  @PostMapping(value = "/passphrases",
-      produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public Passphrase post(@RequestParam(required = false, defaultValue = "4") int length) {
     Passphrase passphrase = new Passphrase();
     String[] words = generator.generate(length);
@@ -51,7 +41,7 @@ public class DicewareController {
     return repository.save(passphrase);
   }
 
-  @GetMapping(value = "/passphrases/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @GetMapping(value = "/{id:\\d+}", produces = MediaType.APPLICATION_JSON_VALUE)
   public Passphrase getPassphrase(@PathVariable long id) {
     return repository
         .findById(id)
